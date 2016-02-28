@@ -6,13 +6,14 @@
 /*   By: jpirsch <jpirsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 13:05:08 by jpirsch           #+#    #+#             */
-/*   Updated: 2015/04/08 13:34:24 by jpirsch          ###   ########.fr       */
+/*   Updated: 2016/02/28 01:34:59 by jpirsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUISSANCE4_H
 # define PUISSANCE4_H
 # include "libft.h"
+# include "get_next_line.h"
 # define IA 1
 # define PLAYER 2
 
