@@ -6,7 +6,7 @@
 /*   By: jpirsch <jpirsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 13:05:08 by jpirsch           #+#    #+#             */
-/*   Updated: 2016/02/28 05:51:57 by jpirsch          ###   ########.fr       */
+/*   Updated: 2016/02/28 07:57:14 by jpirsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,16 @@ int		player_turn(t_env *e)
 	ft_putstr("Its your turn, in which column will you play ?\n");
 	if (n < 1 || n > e->board->width)
 		n = error(n, e);
-	if (putcoin(e->board, n - 1) == 0)
+	if (putcoin(e->board, n - 1, PLAYER) == 0)
 		error(n, e);
 	return (1);
 }
 
 void 	ia_turn(t_env *e)
 {
-	e->board->width = 7;
-/*	int	move;
-
 	ft_putstr("IA plays :\n");
-	move = minmax(e);
-	putcoin(e->board, move);*/
+	minmax(e, e->ia->level);
+	putcoin(e->board, e->ia->move, IA);
 }
 
 int	launch_interface(t_env *e)

@@ -6,7 +6,7 @@
 /*   By: jpirsch <jpirsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 13:05:08 by jpirsch           #+#    #+#             */
-/*   Updated: 2016/02/28 05:47:27 by jpirsch          ###   ########.fr       */
+/*   Updated: 2016/02/28 07:17:03 by jpirsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	display(t_board *board)
 	}
 }
 
-int		putcoin(t_board *board, int col)
+int		putcoin(t_board *board, int col, int joueur)
 {
 	int i;
 	int result;
@@ -77,10 +77,28 @@ int		putcoin(t_board *board, int col)
 		i++;
 	if (i > 0)
 	{
-		board->tab[i - 1][col] = 1;
+		board->tab[i - 1][col] = joueur;
 		result = 1;
 	}
 	if (i == 0)
+		result = 0;
+	return (result);
+}
+
+int		remove_coin(t_board *board, int col)
+{
+	int i;
+	int result;
+
+	i = 0;
+	while (i < board->height && board->tab[i][col] == 0)
+		i++;
+	if (i < board->height)
+	{
+		board->tab[i][col] = 0;
+		result = 1;
+	}
+	else
 		result = 0;
 	return (result);
 }
