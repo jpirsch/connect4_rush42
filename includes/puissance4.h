@@ -46,7 +46,7 @@ int	launch_interface(t_env *e);
 t_board	*init_board();
 int	free_board(t_board *board);
 void	display(t_board *board);
-void	putcoin(t_board *board, int col);
+int 	putcoin(t_board *board, int col);
 int	partie_finie(t_board *board);
 /*
  * IA

@@ -12,24 +12,56 @@
 
 #include "puissance4.h"
 
+int	error(int n, t_env *e)
+{
+	char *line;
+	int i;
+
+	while (n < 1 || n > e->board->width)
+	{
+		i = 0;
+		ft_putstr("Enter a valid number between 1 and ");
+		ft_putnbr(e->board->width);
+		ft_putchar('\n');
+		if (!(get_next_line(0, &line)))
+			return (0);
+		n = ft_atoi(line);
+		while (line[i] != '\0')
+		{
+			if (line[i] < '0' || line[i] > '9')
+				n = 0;
+			i++;			
+		}
+		if (e->board->tab[0][n - 1] != 0 && n > 0)
+		{
+			ft_putendl("You can't play this move. The column is full.");
+			n = 0;
+		}
+	}
+	return (n);
+}	
+
 int     player_turn(t_env *e)
 {
-	char	*line;
+	int 	n;
 
+	n = 0;
 	ft_putstr("Its your turn, in which column will you play ?\n");
-	if (!(get_next_line(0, &line)))
-		return (0);
-	putcoin(e->board, ft_atoi(line) - 1);
+	if (n < 1 || n > e->board->width)
+		n = error(n, e);
+	if (putcoin(e->board, n - 1) == 0)
+		error(n, e);
 	return (1);
 }
 
-void	ia_turn(t_env *e)
+void 	ia_turn(t_env *e)
 {
-	int	move;
+	e->board->width = 7;
+/*	int	move;
 
 	ft_putstr("IA plays :\n");
 	move = minmax(e);
-	putcoin(e->board, move);
+	putcoin(e->board, move);*/
 }
 
 int	launch_interface(t_env *e)
@@ -41,7 +73,7 @@ int	launch_interface(t_env *e)
 	while (!(score = partie_finie(e->board)))
 	{
 		display(e->board);
-		(turn == IA) ? ia_turn(e) : ft_putnbr(player_turn(e));
+		(turn == IA) ? ia_turn(e) : player_turn(e);
 		turn = (turn == IA) ? PLAYER : IA;
 	}
 	display(e->board);
