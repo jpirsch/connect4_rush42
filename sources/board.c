@@ -67,14 +67,22 @@ void	display(t_board *board)
 	}
 }
 
-void	putcoin(t_board *board, int col)
+int 	putcoin(t_board *board, int col)
 {
 	int i;
+	int result;
 
 	i = 0;
 	while (i < board->height && board->tab[i][col] == 0)
 		i++;
-	board->tab[i - 1][col] = 1;
+	if (i > 0)
+	{
+		board->tab[i - 1][col] = 1;
+		result = 1;
+	}
+	if (i == 0)
+		result = 0;
+	return (result);
 }
 
 int	partie_finie(t_board *board)
