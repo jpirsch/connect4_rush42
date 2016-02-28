@@ -6,7 +6,7 @@
 /*   By: jpirsch <jpirsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 13:05:08 by jpirsch           #+#    #+#             */
-/*   Updated: 2016/02/28 00:16:40 by jpirsch          ###   ########.fr       */
+/*   Updated: 2016/02/28 01:03:45 by jpirsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,14 @@ void	putcoin(t_board *board, int col)
 	i = 0;
 	ft_putstr("col : ");
 	ft_putnbr(col);
+	ft_putnbr(board->height);
+	ft_putnbr(board->tab[i][col]);
 	while (i < board->height && board->tab[i][col] == 0)
+    {
         ft_putstr(" da ");
         ft_putnbr(i);
 		i++;
+    }
     ft_putstr("here\n");
 	board->tab[i - 1][col] = 1;
 }
