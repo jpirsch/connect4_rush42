@@ -6,13 +6,13 @@
 /*   By: jpirsch <jpirsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 13:05:08 by jpirsch           #+#    #+#             */
-/*   Updated: 2015/04/08 13:34:24 by jpirsch          ###   ########.fr       */
+/*   Updated: 2016/02/28 05:49:50 by jpirsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance4.h"
 
-t_env	*init_env()
+t_env	*init_env(void)
 {
 	t_env	*e;
 
@@ -22,7 +22,7 @@ t_env	*init_env()
 	return (e);
 }
 
-int	free_env(t_env *e)
+int		free_env(t_env *e)
 {
 	if (!(free_board(e->board)))
 		return (0);
@@ -31,7 +31,7 @@ int	free_env(t_env *e)
 	return (1);
 }
 
-int main(void)//int ac, char **av)
+int		main(void)//int ac, char **av)
 {
 	t_env	*e;
 

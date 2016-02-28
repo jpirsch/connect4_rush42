@@ -2,6 +2,7 @@ NAME		= ../puissance4
 SRC		= main.c \
 			ia.c \
 			board.c \
+			board1.c \
 			interface.c \
 			get_next_line.c
 INCLUDES	=	-I ../includes

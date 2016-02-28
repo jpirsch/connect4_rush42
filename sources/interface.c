@@ -6,16 +6,16 @@
 /*   By: jpirsch <jpirsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 13:05:08 by jpirsch           #+#    #+#             */
-/*   Updated: 2016/02/28 01:40:37 by jpirsch          ###   ########.fr       */
+/*   Updated: 2016/02/28 05:51:57 by jpirsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance4.h"
 
-int	error(int n, t_env *e)
+int		error(int n, t_env *e)
 {
-	char *line;
-	int i;
+	char	*line;
+	int		i;
 
 	while (n < 1 || n > e->board->width)
 	{
@@ -30,7 +30,7 @@ int	error(int n, t_env *e)
 		{
 			if (line[i] < '0' || line[i] > '9')
 				n = 0;
-			i++;			
+			i++;
 		}
 		if (e->board->tab[0][n - 1] != 0 && n > 0)
 		{
@@ -39,11 +39,11 @@ int	error(int n, t_env *e)
 		}
 	}
 	return (n);
-}	
+}
 
-int     player_turn(t_env *e)
+int		player_turn(t_env *e)
 {
-	int 	n;
+	int	n;
 
 	n = 0;
 	ft_putstr("Its your turn, in which column will you play ?\n");
