@@ -6,23 +6,21 @@
 /*   By: jpirsch <jpirsch@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/27 13:05:08 by jpirsch           #+#    #+#             */
-/*   Updated: 2016/02/28 00:31:35 by jpirsch          ###   ########.fr       */
+/*   Updated: 2016/02/28 01:40:37 by jpirsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puissance4.h"
 
-void	player_turn(t_env *e)
+int     player_turn(t_env *e)
 {
-	char	buf[1];
-	int	ret;
+	char	*line;
 
 	ft_putstr("Its your turn, in which column will you play ?\n");
-	ret = read(0, buf, 1);
-	if (ret != 1)
-		return ;
-	buf[ret] = 0;
-	putcoin(e->board, ft_atoi(buf));
+	if (!(get_next_line(0, &line)))
+		return (0);
+	putcoin(e->board, ft_atoi(line) - 1);
+	return (1);
 }
 
 void	ia_turn(t_env *e)
@@ -43,7 +41,7 @@ int	launch_interface(t_env *e)
 	while (!(score = partie_finie(e->board)))
 	{
 		display(e->board);
-		(turn == IA) ? ia_turn(e) : player_turn(e);
+		(turn == IA) ? ia_turn(e) : ft_putnbr(player_turn(e));
 		turn = (turn == IA) ? PLAYER : IA;
 	}
 	display(e->board);
